@@ -9,7 +9,7 @@ snake[0] = {
 let fruta = {
     x: Math.floor(Math.random() * 15 + 1) * box,
     y: Math.floor(Math.random() * 15 + 1) * box
-}
+}//randomiza a criação da fruta
 let direcao = "right";
 
 let pontos = 0 ;
@@ -17,19 +17,19 @@ let pontos = 0 ;
 function criarBG() {
     context.fillStyle = "#C4A7F2";
     context.fillRect(0, 0, 16 * box, 16 * box)
-}
+}//desenha background
 
 function criarCobra() {
     for(i=0; i < snake.length; i++){
         context.fillStyle = "#F26B83"
         context.fillRect(snake[i].x, snake[i].y, box, box);
     }
-}
+} //desenha cobra
 
 function criarFruta() {
     context.fillStyle = "orange"
     context.fillRect(fruta.x, fruta.y, box, box)
-}
+}//desenha fruta
 
 document.addEventListener('keydown', atualizar);
 
@@ -38,7 +38,7 @@ function atualizar (event){
     if(event.keyCode == 38 && direcao != 'down') direcao = 'up';
     if(event.keyCode == 39 && direcao != 'left') direcao = 'right';
     if(event.keyCode == 40 && direcao != 'up') direcao = 'down';
-}
+}//controles
 
 function sistema(){
 
@@ -67,8 +67,6 @@ function sistema(){
     if(direcao == "up") snakeY -= box;
     if(direcao == "down")  snakeY += box;
 
-    let points = document.querySelector('.points');
-
     if(snakeX != fruta.x || snakeY != fruta.y){
         snake.pop();
     }
@@ -76,10 +74,10 @@ function sistema(){
         fruta.x = Math.floor(Math.random() * 15 + 1) * box;
         fruta.y = Math.floor(Math.random() * 15 + 1) * box;
        
-        let points = document.querySelector('#points');
+        let points = document.querySelector('#points');//
         pontos++;
         console.log(pontos)
-        points.innerHTML = "Seus Pontos: " + pontos;
+        points.innerHTML = "Seus Pontos:" + pontos;
     }
 
     let newHead = {
