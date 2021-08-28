@@ -49,7 +49,7 @@ function sistema(){
     if(snake[0].x > 15 * box && direcao == "right") snake[0].x = 0;
     if(snake[0].x < 0 && direcao == "left") snake[0].x = 16 * box;
     if(snake[0].y > 15 * box && direcao == "down") snake[0].y = 0;
-    if(snake[0].y < 0 && direcao == "up") snake[0].y = 16 * box;
+    if(snake[0].y < 0 && direcao == "up") snake[0].y = 16 * box;//cria o loop da cobra
 
     for(i = 1; i < snake.length; i++){
         if(snake[0].x == snake[i].x && snake[0].y == snake[i].y){
@@ -57,7 +57,7 @@ function sistema(){
             alert('FIM DE JOGO !');
             window.location.reload(false);
         }
-    }
+    }//termina o jogo
   
     let snakeX = snake[0].x; 
     let snakeY = snake[0].y;
@@ -65,7 +65,7 @@ function sistema(){
     if(direcao == "right") snakeX += box;
     if(direcao == "left")  snakeX -= box;
     if(direcao == "up") snakeY -= box;
-    if(direcao == "down")  snakeY += box;
+    if(direcao == "down")  snakeY += box;//define as cordenadas das direções
 
     if(snakeX != fruta.x || snakeY != fruta.y){
         snake.pop();
@@ -74,11 +74,11 @@ function sistema(){
         fruta.x = Math.floor(Math.random() * 15 + 1) * box;
         fruta.y = Math.floor(Math.random() * 15 + 1) * box;
        
-        let points = document.querySelector('#points');//
+        let points = document.querySelector('#points');//atuliza os pontos
         pontos++;
         console.log(pontos)
         points.innerHTML = "Seus Pontos:" + pontos;
-    }
+    }//define o comprimento da cobra
 
     let newHead = {
         x: snakeX,
@@ -91,5 +91,4 @@ function sistema(){
 
 
 
-let jogo = setInterval(sistema, 80);
-
+let jogo = setInterval(sistema, 120);
